@@ -41,21 +41,36 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#firstName').type('PrimeiroNomeExemplo')
         cy.get('#lastName').type('UltimoNomeExemplo')
         cy.get('#email').type('emailemail@email.com')
-        cy.get('#phone-checkbox').click()
+        cy.get('#phone-checkbox').check()
         
         cy.contains('button', 'Enviar').click()
         cy.get('.error').should('be.visible')
     })
     
     it('preenche e limpa os campos nome, sobrenome, email e telefone', function() {
-        cy.get('#firstName').type('PrimeiroNomeExemplo').should('have.value', 'PrimeiroNomeExemplo')
-        .clear().should('have.value', '')
-        cy.get('#lastName').type('UltimoNomeExemplo').should('have.value', 'UltimoNomeExemplo')
-        .clear().should('have.value', '')
-        cy.get('#email').type('emailemail@email.com').should('have.value', 'emailemail@email.com')
-        .clear().should('have.value', '')
-        cy.get('#phone').type('5591188887777').should('have.value', '5591188887777')
-        .clear().should('have.value', '')
+        cy.get('#firstName')
+            .type('PrimeiroNomeExemplo')
+            .should('have.value', 'PrimeiroNomeExemplo')
+            .clear()
+            .should('have.value', '')
+
+        cy.get('#lastName')
+            .type('UltimoNomeExemplo')
+            .should('have.value', 'UltimoNomeExemplo')
+            .clear()
+            .should('have.value', '')
+
+        cy.get('#email')
+            .type('emailemail@email.com')
+            .should('have.value', 'emailemail@email.com')
+            .clear()
+            .should('have.value', '')
+            
+        cy.get('#phone')
+            .type('5591188887777')
+            .should('have.value', '5591188887777')
+            .clear()
+            .should('have.value', '')
     })
     
     it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios.', function() {
